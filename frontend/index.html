@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Review</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Book Review</h1>
+      <p>書籍とレビューを管理するWebアプリ</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Bookを登録</h2>
+
+      <form id="book-form">
+        <div class="form-grid">
+          <label>
+            書籍タイトル
+            <input
+              id="book-title"
+              name="title"
+              type="text"
+              required
+              placeholder="例：吾輩は猫である"
+            >
+          </label>
+
+          <label>
+            著者
+            <input
+              id="book-author"
+              name="author"
+              type="text"
+              required
+              placeholder="例：夏目漱石"
+            >
+          </label>
+
+          <label>
+            発行年
+            <input
+              id="book-year"
+              name="published_year"
+              type="number"
+              required
+              min="1"
+              max="9999"
+              placeholder="例：1905"
+            >
+          </label>
+        </div>
+
+        <button type="submit">Bookを登録</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <h2>Book一覧</h2>
+        <button id="reload-books" type="button" class="secondary">
+          再読み込み
+        </button>
+      </div>
+
+      <p id="message" class="message" aria-live="polite">
+        第5回でフロントエンドとAPIを接続します。
+      </p>
+
+      <div id="book-list" class="book-list">
+        <div class="empty-state">
+          Book一覧はAPI接続後に表示されます。
+        </div>
+      </div>
+    </section>
+
+    <section id="review-panel" class="panel" hidden>
+      <h2>
+        Review
+        <span id="selected-book-title"></span>
+      </h2>
+
+      <form id="review-form">
+        <label>
+          レビュアー名
+          <input
+            id="reviewer"
+            name="reviewer"
+            type="text"
+            required
+            placeholder="例：Taro"
+          >
+        </label>
+
+        <label>
+          コメント
+          <textarea
+            id="review-comment"
+            name="comment"
+            required
+            rows="4"
+            placeholder="レビューを書いてください"
+          ></textarea>
+        </label>
+
+        <label>
+          評価（1〜5）
+          <input
+            id="review-rating"
+            name="rating"
+            type="number"
+            required
+            min="1"
+            max="5"
+            step="1"
+            value="5"
+          >
+        </label>
+
+        <button type="submit">Reviewを登録</button>
+      </form>
+
+      <div id="review-list" class="review-list"></div>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
